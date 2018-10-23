@@ -5,7 +5,7 @@
 npm start
 ```
 
-To spin up local instance of customizer you will need `rambleron/customizer-test`
+To spin up local instance of customizer you will need `rambleron/rambleron-web`
 ```
 cd netsuite-web
 
