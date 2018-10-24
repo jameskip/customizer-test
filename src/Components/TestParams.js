@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 import utils from '../lib/utilities.js'
 
+//
+// component rendering helper functions
+//
+
+const renderedProducts = () => {}
+const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
+
+//
+//  test data
+//
+
 const colors = {
   stainless: {
     id: 'stainless',
@@ -14,7 +25,7 @@ const colors = {
   },
   navy: {
     id: 'navy',
-    hexCode: '',
+    hexCode: '#39444b',
     displayName: 'Navy'
   },
   black: {
@@ -77,43 +88,49 @@ const products = [
   'rambler-bottle-18oz-lecoral', 'rambler-bottle-64oz-black', 'rambler-tumbler-20oz-olivegreen'
 ]
 
-const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
 
-const renderedProducts = () => {}
+//
+//  TestParams
+//
 
 export default class TestParams extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {value: []}
+    this.state = {colors: new Set()}
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
+  
   handleChange(event) {
     let selected = event.target.value
-    let joined = this.state.value.concat(selected)
-    console.log({selected, joined});
     
-    this.setState({ value: joined })
+    // console.log({ selected })
+    
+    if (this.state.colors.has(selected)) {
+      this.state.colors.delete(selected)
+    } else {
+      let colors = this.state.colors.add(selected)
+      this.setState({ colors: colors })
+    }
   }
-
+  
   handleSubmit(event) {
     // TODO: pass form to test runner to begin running automated tests
-
-    alert('Form submitted: ' + this.state.value)
-    event.preventDefault();
+    alert('Form submitted: ' + JSON.stringify([...this.state.colors]))
+    // let cleared = this.state.colors.clear()
+    // this.setState({colors: cleared})
+    event.preventDefault()
   }
-
-
+  
   render () {
     return (
       <form id="form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
 
         <fieldset id="product">
           <legend>Product</legend>
-            {}
+            {/* {renderedProducts} */}
         </fieldset>
 
         <fieldset id="color">
