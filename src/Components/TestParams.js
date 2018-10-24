@@ -54,7 +54,7 @@ const colors = {
   },
 }
 
-const products = [
+const productStrings = [
   'rambler-tumbler-20oz', 'rambler-tumbler-20oz-seafoam', 'rambler-tumbler-20oz-navy', 'rambler-tumbler-20oz-black',
   'rambler-tumbler-20oz-brickred', 'rambler-tumbler-20oz-pink', 'rambler-tumbler-20oz-white', 'rambler-tumbler-20oz-charcoal',
   'rambler-tumbler-20oz-harborpink', 'rambler-tumbler-30oz', 'rambler-tumbler-30oz-seafoam', 'rambler-tumbler-30oz-navy',
@@ -82,12 +82,53 @@ const products = [
   'rambler-bottle-18oz-lecoral', 'rambler-bottle-64oz-black', 'rambler-tumbler-20oz-olivegreen'
 ]
 
+const products = {
+  Tumbler20oz: {
+    name: 'Tumbler 20oz',
+    options: [
+      'rambler-tumbler-20oz',
+      'rambler-tumbler-20oz-seafoam',
+      'rambler-tumbler-20oz-navy',
+      'rambler-tumbler-20oz-black',
+      'rambler-tumbler-20oz-brickred',
+      'rambler-tumbler-20oz-pink',
+      'rambler-tumbler-20oz-white',
+      'rambler-tumbler-20oz-charcoal',
+      'rambler-tumbl er-20oz-harborpink',
+      'rambler-tumbler-20oz-skyblue',
+      'rambler-tumbler-30oz-skyblue',
+      'rambler-tumbler-20oz-tahoeblue',
+      'rambler-tumbler-20oz-lecoral',
+      'rambler-tumbler-20oz-olivegreen',
+    ]
+  },
+  Tumbler30oz: {
+    name: 'Tumbler 30oz',
+    options: [
+      'rambler-tumbler-20oz',
+      'rambler-tumbler-20oz-seafoam',
+      'rambler-tumbler-20oz-navy',
+      'rambler-tumbler-20oz-black',
+      'rambler-tumbler-20oz-brickred',
+      'rambler-tumbler-20oz-pink',
+      'rambler-tumbler-20oz-white',
+      'rambler-tumbler-20oz-charcoal',
+      'rambler-tumbl er-20oz-harborpink',
+      'rambler-tumbler-20oz-skyblue',
+      'rambler-tumbler-30oz-skyblue',
+      'rambler-tumbler-20oz-tahoeblue',
+      'rambler-tumbler-20oz-lecoral',
+      'rambler-tumbler-20oz-olivegreen',
+    ]
+  }
+}
+
 
 //
 // component rendering helper functions
 //
 
-const renderedProducts = () => {}
+const renderedProducts = Object.values(products).map(curr => utils.renderProducts(curr))
 const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
 
 
@@ -132,7 +173,7 @@ export default class TestParams extends Component {
 
         <fieldset id="product">
           <legend>Product</legend>
-            {/* {renderedProducts} */}
+            {renderedProducts}
         </fieldset>
 
         <fieldset id="color">
