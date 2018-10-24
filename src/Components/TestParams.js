@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import utils from '../lib/utilities.js'
 
-//
-// component rendering helper functions
-//
-
-const renderedProducts = () => {}
-const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
 
 //
 //  test data
@@ -87,6 +81,14 @@ const products = [
   'rambler-colster-olivegreen', 'rambler-tumbler-20oz-lecoral', 'rambler-lowball-tahoeblue', 'rambler-tumbler-30oz-tahoeblue',
   'rambler-bottle-18oz-lecoral', 'rambler-bottle-64oz-black', 'rambler-tumbler-20oz-olivegreen'
 ]
+
+
+//
+// component rendering helper functions
+//
+
+const renderedProducts = () => {}
+const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
 
 
 //
