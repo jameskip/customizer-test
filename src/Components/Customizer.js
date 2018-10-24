@@ -5,12 +5,6 @@ export default class Customizer extends Component {
     super(props)
   }
 
-  componentDidMount () {
-    const main = document.createElement('main')
-    main.setAttribute('id', 'main')
-    document.body.appendChild(main)
-  }
-
   onLoad () {
     window.YETI.customizer.init({
       selector: '#customizer', // required

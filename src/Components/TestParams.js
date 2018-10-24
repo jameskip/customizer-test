@@ -1,22 +1,52 @@
 import React, { Component } from 'react'
-import renderColors from '../lib/utilities.js'
+import utils from '../lib/utilities.js'
 
 const colors = {
-  Stainless: {
+  stainless: {
     id: 'stainless',
-    background: '#667984',
+    hexCode: '#667984',
     displayName: 'Stainless'
   },
-  Seafoam: {
+  seafoam: {
     id: 'seafoam',
-    background: '#65c7c8',
+    hexCode: '#65c7c8',
     displayName: 'Seafoam'
   },
-  Navy: {
+  navy: {
     id: 'navy',
-    background: '',
+    hexCode: '',
     displayName: 'Navy'
-  }
+  },
+  black: {
+    id: 'black',
+    hexCode: '#000000',
+    displayName: 'Black'
+  },
+  brickred: {
+    id: 'brickred',
+    hexCode: '#8f3833',
+    displayName: 'Brick Red'
+  },
+  white: {
+    id: 'white',
+    hexCode: '#ffffff',
+    displayName: 'White'
+  },
+  charcoal: {
+    id: 'charcoal',
+    hexCode: '#39444b',
+    displayName: 'Charcoal'
+  },
+  harborpink: {
+    id: 'harborpink',
+    hexCode: '#e387a0',
+    displayName: 'Harbor Pink'
+  },
+  skyblue: {
+    id: 'skyblue',
+    hexCode: '#85cbec',
+    displayName: 'Sky Blue'
+  },
 }
 
 const products = [
@@ -47,22 +77,52 @@ const products = [
   'rambler-bottle-18oz-lecoral', 'rambler-bottle-64oz-black', 'rambler-tumbler-20oz-olivegreen'
 ]
 
-const renderedColors = Object.values(colors).map(curr => renderColors(curr))
+const renderedColors = Object.values(colors).map(curr => utils.renderColors(curr))
+
+const renderedProducts = () => {}
 
 export default class TestParams extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {value: []}
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    let selected = event.target.value
+    let joined = this.state.value.concat(selected)
+    console.log({selected, joined});
+    
+    this.setState({ value: joined })
+  }
+
+  handleSubmit(event) {
+    // TODO: pass form to test runner to begin running automated tests
+
+    alert('Form submitted: ' + this.state.value)
+    event.preventDefault();
+  }
+
+
   render () {
     return (
-      <form id="form">
+      <form id="form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
 
         <fieldset id="product">
           <legend>Product</legend>
-
+            {}
         </fieldset>
 
         <fieldset id="color">
           <legend>Color</legend>
           {renderedColors}
         </fieldset>
+
+        <input type="submit" value="Submit" />
+
       </form>
     )
   }
