@@ -30,5 +30,6 @@ legend {
 
 form {
   text-align: justify;
-  position: absolute
+  position: absolute;
+  padding: 20px 20px;
 }
