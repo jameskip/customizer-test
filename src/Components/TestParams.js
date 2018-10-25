@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import utils from '../lib/utilities.js'
 import metaData from '../lib/metaData.js'
 
 //
-// component rendering helper functions
+// rendered component variables
 //
 
 const renderedProducts = Object.values(metaData.products).map(curr => utils.renderProducts(curr))
@@ -13,51 +13,73 @@ const renderedColors = Object.values(metaData.colors).map(curr => utils.renderCo
 //  TestParams
 //
 
-export default class TestParams extends Component {
+export default class TestParams extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { paramaters: new Set() }
+    this.state = { products: new Set(), colors: new Set() }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleProductChange = this.handleProductChange.bind(this)
+    this.handleColorChange = this.handleColorChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleReset = this.handleReset.bind(this)
   }
   
-  handleChange(event) {
+  handleProductChange(event) {
     let selected = event.target.value
-    
-    if (this.state.paramaters.has(selected)) {
-      this.state.paramaters.delete(selected)
-      this.setState({ paramaters: this.state.paramaters })
-    } else {
-      let paramaters = this.state.paramaters.add(selected)
-      this.setState({ paramaters })
-    }
+    let products
+
+    return this.state.products.has(selected) ? (
+      this.state.products.delete(selected),
+      this.setState({ products: this.state.products })
+    ) : (
+      products = this.state.products.add(selected),
+      this.setState({ products })
+    )
+  }
+
+  handleColorChange(event) {
+    let selected = event.target.value
+    let colors
+
+    return this.state.colors.has(selected) ? (
+      this.state.colors.delete(selected),
+      this.setState({ colors: this.state.colors })
+    ) : (
+      colors = this.state.colors.add(selected),
+      this.setState({ colors })
+    )
   }
   
   handleSubmit(event) {
-    // TODO: pass form to test runner to begin running automated tests
-    alert('Form submitted: ' + JSON.stringify([...this.state.paramaters]))
-    // let cleared = this.state.colors.clear()
-    // this.setState({ colors: cleared })
+    // TODO: pass form to test runner to begin running automated tests;
+    let cleanStrings = utils.cleanedStrings(this.state)
+    
+    // alert('Form submitted: ' + JSON.stringify([...this.state.products, ...this.state.colors]))
     event.preventDefault()
+  }
+
+  handleReset() {
+    // this does not work because when component handles change the first click after registeres as selected alread
+    // this.setState({ products: new Set(), colors: new Set() })
   }
   
   render () {
     return (
-      <form id="form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
-        <fieldset id="product">
+        <fieldset id="product" onChange={this.handleProductChange}>
           <legend>Product</legend>
             {renderedProducts}
         </fieldset>
 
-        <fieldset id="color">
+        <fieldset id="color" onChange={this.handleColorChange}>
           <legend>Color</legend>
           {renderedColors}
         </fieldset>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Test" />
+        <input type="reset" value="Reset" />
 
       </form>
     )

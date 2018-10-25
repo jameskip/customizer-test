@@ -33,3 +33,7 @@ form {
   position: absolute;
   padding: 20px 20px;
 }
+
+#yeti-customizer {
+  height: 800px;
+}

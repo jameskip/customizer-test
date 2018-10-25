@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Customizer extends Component {
-  constructor (props) {
-    super(props)
-  }
+export default class Customizer extends React.Component {
+  // constructor (props) {
+  //   super(props)
+  // }
 
-  onLoad () {
+  onLoad() {
     window.YETI.customizer.init({
       selector: '#customizer', // required
       product: 'rambler-colster', // required
@@ -21,11 +21,11 @@ export default class Customizer extends Component {
     })
   };
 
-  componentDidUpdate () {
+  componentDidUpdate() {
 
   }
 
-  render () {
+  render() {
     return (
       <>
         {this.onLoad()}
