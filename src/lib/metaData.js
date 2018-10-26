@@ -2,42 +2,55 @@ const metaData = {
 
   products: {
     tumbler20oz: {
+      id: 'tumbler-20oz',
       name: 'Tumbler 20oz',
     },
     tumbler30oz: {
+      id: 'tumbler-30oz',
       name: 'Tumbler 30oz',
     },
     mug14oz: {
+      id: 'mug-14oz',
       name: 'Mug 14oz',
     },
     wine10oz: {
+      id: 'wine-10oz',
       name: 'Wine 10oz',
     },
     lowball10oz: {
+      id: 'lowball-10oz',
       name: 'Lowball 10oz',
     },
     colster: {
+      id: 'colster',
       name: 'Colster',
     },
     pint16oz: {
+      id: 'pint-16oz',
       name: 'Pint 16oz',
     },
     bottle18oz: {
+      id: 'bottle-18oz',
       name: 'Bottle 18oz'
     },
     bottle26oz: {
+      id: 'bottle-26oz',
       name: 'Bottle 26oz',
     },
     bottle36oz: {
+      id: 'bottle-36oz',
       name: 'Bottle 36oz',
     },
     bottle64oz: {
+      id: 'bottle-64oz',
       name: 'Bottle 64oz',
     },
     halfGallonJug: {
+      id: 'jug-34oz',
       name: 'Half Gallon Jug'
     },
     gallonJug: {
+      id: 'jug-128oz',
       name: 'Gallon Jug'
     },
   },

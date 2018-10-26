@@ -21,13 +21,19 @@ const utils = {
     )
   },
 
-  cleanedStrings(strings) {
+  cleanStrings(strings) {
 
-    const cleaned = strings.reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), [])
+    const cleanedParams = {
+      products: [],
+      colors: [],
+    }
+
+    cleanedParams.products.push([...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)))
+    cleanedParams.colors.push([...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)))
   
-    return cleaned
+    return cleanedParams
+    
   }
-
 }
 
 export default utils;

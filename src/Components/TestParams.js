@@ -30,8 +30,8 @@ export default class TestParams extends React.Component {
     let products
 
     return this.state.products.has(selected) ? (
-      this.state.products.delete(selected),
-      this.setState({ products: this.state.products })
+      products = this.state.products.delete(selected),
+      this.setState({ products })
     ) : (
       products = this.state.products.add(selected),
       this.setState({ products })
@@ -53,9 +53,10 @@ export default class TestParams extends React.Component {
   
   handleSubmit(event) {
     // TODO: pass form to test runner to begin running automated tests;
-    let cleanStrings = utils.cleanedStrings(this.state)
+    let cleanStrings = utils.cleanStrings(this.state)
+    cleanStrings = JSON.stringify(cleanStrings)
     
-    // alert('Form submitted: ' + JSON.stringify([...this.state.products, ...this.state.colors]))
+    alert(`Test parameters: ${cleanStrings}`)
     event.preventDefault()
   }
 
