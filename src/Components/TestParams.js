@@ -28,6 +28,7 @@ export default class TestParams extends React.Component {
     let selected = event.target.value
     let products
 
+    // eslint-disable-next-line
     return this.state.products.has(selected) ? (
       this.state.products.delete(selected),
       this.setState({ products: this.state.products })
@@ -41,6 +42,7 @@ export default class TestParams extends React.Component {
     let selected = event.target.value
     let colors
 
+    // eslint-disable-next-line
     return this.state.colors.has(selected) ? (
       this.state.colors.delete(selected),
       this.setState({ colors: this.state.colors })
@@ -53,9 +55,7 @@ export default class TestParams extends React.Component {
   handleSubmit (event) {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
-    cleanStrings = JSON.stringify(cleanStrings)
-
-    alert(`Test parameters: ${cleanStrings}`)
+    console.table(cleanStrings)
     event.preventDefault()
   }
 
