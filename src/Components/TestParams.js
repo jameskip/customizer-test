@@ -60,11 +60,12 @@ export default class TestParams extends React.Component {
   }
 
   handleReset () {
-    // this does not work because when component handles change the first click after registeres as selected alread
+    // this does not work because when component handles change the first click after registeres as selected already
     // this.setState({ products: new Set(), colors: new Set() })
   }
 
   render () {
+    // TODO: As this component gets larger we will need to break them down into smaller components.
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 

@@ -23,8 +23,8 @@ const utils = {
 
   cleanStrings (strings) {
     return {
-      products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []).flat(),
-      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []).flat()
+      products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
+      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), [])
     }
   }
 
