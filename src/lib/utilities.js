@@ -2,32 +2,32 @@ import React from 'react'
 
 const utils = {
 
-  renderColors(color) {
+  renderColors (color) {
     return (
-      <div id={color.id} key={color.hexCode} style={{borderStyle: "solid", borderColor: "white"}}>
+      <div id={color.id} key={color.hexCode} style={{ borderStyle: 'solid', borderColor: 'white' }}>
         <input type="checkbox" id={color.id} name="color" value={color.displayName} />
-        <label htmlFor={color.id} style={{ position: "absolute", left: "75px"  }}> {color.displayName} </label>
-        <span style={{ paddingLeft: "5px", height: "20px", width: "10px", position: "absolute", backgroundColor: color.hexCode, zIndex: 0  }}> </span>
+        <label htmlFor={color.id} style={{ position: 'absolute', left: '75px' }}> {color.displayName} </label>
+        <span style={{ paddingLeft: '5px', height: '20px', width: '10px', position: 'absolute', backgroundColor: color.hexCode, zIndex: 0 }}> </span>
       </div>
     )
   },
 
-  renderProducts(product) {
+  renderProducts (product) {
     return (
-      <div id={product.name} key={product.name} style={{borderStyle: "solid", borderColor: "white"}}>
+      <div id={product.name} key={product.name} style={{ borderStyle: 'solid', borderColor: 'white' }}>
         <input style={{ paddingTop: 100 }} type="checkbox" name="product" value={product.name} />
         <label htmlFor={product.name}> {product.name} </label>
       </div>
     )
   },
 
-  cleanStrings(strings) {
+  cleanStrings (strings) {
     return {
-      products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)).flat(),
-      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)).flat(),
+      products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []).flat(),
+      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []).flat()
     }
   }
 
 }
 
-export default utils;
+export default utils

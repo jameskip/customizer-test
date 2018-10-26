@@ -14,8 +14,7 @@ const renderedColors = Object.values(metaData.colors).map(curr => utils.renderCo
 //
 
 export default class TestParams extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { products: new Set(), colors: new Set() }
 
@@ -24,8 +23,8 @@ export default class TestParams extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
   }
-  
-  handleProductChange(event) {
+
+  handleProductChange (event) {
     let selected = event.target.value
     let products
 
@@ -38,7 +37,7 @@ export default class TestParams extends React.Component {
     )
   }
 
-  handleColorChange(event) {
+  handleColorChange (event) {
     let selected = event.target.value
     let colors
 
@@ -50,28 +49,28 @@ export default class TestParams extends React.Component {
       this.setState({ colors })
     )
   }
-  
-  handleSubmit(event) {
+
+  handleSubmit (event) {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
     cleanStrings = JSON.stringify(cleanStrings)
-    
+
     alert(`Test parameters: ${cleanStrings}`)
     event.preventDefault()
   }
 
-  handleReset() {
+  handleReset () {
     // this does not work because when component handles change the first click after registeres as selected alread
     // this.setState({ products: new Set(), colors: new Set() })
   }
-  
-  render() {
+
+  render () {
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
         <fieldset id="product" onChange={this.handleProductChange}>
           <legend>Product</legend>
-            {renderedProducts}
+          {renderedProducts}
         </fieldset>
 
         <fieldset id="color" onChange={this.handleColorChange}>

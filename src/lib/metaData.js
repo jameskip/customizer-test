@@ -3,31 +3,31 @@ const metaData = {
   products: {
     tumbler20oz: {
       id: 'tumbler-20oz',
-      name: 'Tumbler 20oz',
+      name: 'Tumbler 20oz'
     },
     tumbler30oz: {
       id: 'tumbler-30oz',
-      name: 'Tumbler 30oz',
+      name: 'Tumbler 30oz'
     },
     mug14oz: {
       id: 'mug-14oz',
-      name: 'Mug 14oz',
+      name: 'Mug 14oz'
     },
     wine10oz: {
       id: 'wine-10oz',
-      name: 'Wine 10oz',
+      name: 'Wine 10oz'
     },
     lowball10oz: {
       id: 'lowball-10oz',
-      name: 'Lowball 10oz',
+      name: 'Lowball 10oz'
     },
     colster: {
       id: 'colster',
-      name: 'Colster',
+      name: 'Colster'
     },
     pint16oz: {
       id: 'pint-16oz',
-      name: 'Pint 16oz',
+      name: 'Pint 16oz'
     },
     bottle18oz: {
       id: 'bottle-18oz',
@@ -35,15 +35,15 @@ const metaData = {
     },
     bottle26oz: {
       id: 'bottle-26oz',
-      name: 'Bottle 26oz',
+      name: 'Bottle 26oz'
     },
     bottle36oz: {
       id: 'bottle-36oz',
-      name: 'Bottle 36oz',
+      name: 'Bottle 36oz'
     },
     bottle64oz: {
       id: 'bottle-64oz',
-      name: 'Bottle 64oz',
+      name: 'Bottle 64oz'
     },
     halfGallonJug: {
       id: 'jug-34oz',
@@ -52,7 +52,7 @@ const metaData = {
     gallonJug: {
       id: 'jug-128oz',
       name: 'Gallon Jug'
-    },
+    }
   },
 
   colors: {
@@ -100,9 +100,9 @@ const metaData = {
       id: 'skyblue',
       hexCode: '#85cbec',
       displayName: 'Sky Blue'
-    },
+    }
   },
-  
+
   productStrings: [
     // 20oz
     'rambler-tumbler-20oz',
@@ -162,7 +162,7 @@ const metaData = {
     'rambler-lowball-lecoral',
     'rambler-lowball-olivegreen',
     'rambler-lowball-tahoeblue',
-    
+
     // Colster
     'rambler-colster',
     'rambler-colster-seafoam',
@@ -174,7 +174,7 @@ const metaData = {
     'rambler-colster-charcoal',
     'rambler-colster-tahoeblue',
     'rambler-colster-olivegreen',
-    
+
     // Pint
     'rambler-stackable-pint-16oz',
     'rambler-stackable-pint-16oz-seafoam',
@@ -228,9 +228,9 @@ const metaData = {
     'rambler-jug-128oz',
 
     // Boomer
-    'boomer-dog-bowl-8',
-  ],
-  
+    'boomer-dog-bowl-8'
+  ]
+
 }
 
 export default metaData
