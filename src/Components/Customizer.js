@@ -5,7 +5,7 @@ export default class Customizer extends React.Component {
   //   super(props)
   // }
 
-  onLoad() {
+  onLoad () {
     window.YETI.customizer.init({
       selector: '#customizer', // required
       product: 'rambler-colster', // required
@@ -21,11 +21,11 @@ export default class Customizer extends React.Component {
     })
   };
 
-  componentDidUpdate() {
+  componentDidUpdate () {
 
   }
 
-  render() {
+  render () {
     return (
       <>
         {this.onLoad()}
