@@ -65,7 +65,7 @@ export default class TestParams extends React.Component {
     // this.setState({ products: new Set(), colors: new Set() })
   }
   
-  render () {
+  render() {
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
