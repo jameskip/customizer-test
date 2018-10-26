@@ -30,8 +30,8 @@ export default class TestParams extends React.Component {
     let products
 
     return this.state.products.has(selected) ? (
-      products = this.state.products.delete(selected),
-      this.setState({ products })
+      this.state.products.delete(selected),
+      this.setState({ products: this.state.products })
     ) : (
       products = this.state.products.add(selected),
       this.setState({ products })

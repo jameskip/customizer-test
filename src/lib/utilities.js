@@ -22,18 +22,12 @@ const utils = {
   },
 
   cleanStrings(strings) {
-
-    const cleanedParams = {
-      products: [],
-      colors: [],
+    return {
+      products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)).flat(),
+      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)).flat(),
     }
-
-    cleanedParams.products.push([...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)))
-    cleanedParams.colors.push([...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc)))
-  
-    return cleanedParams
-    
   }
+
 }
 
 export default utils;
