@@ -1,13 +1,8 @@
 import React from 'react'
-import utils from '../lib/utilities.js'
-import metaData from '../lib/metaData.js'
-
-//
-// rendered component variables
-//
-
-const renderedProducts = Object.values(metaData.products).map(curr => utils.renderProducts(curr))
-const renderedColors = Object.values(metaData.colors).map(curr => utils.renderColors(curr))
+import Colors from './Colors'
+import Products from './Products'
+import utils from '../lib/utilities'
+import metaData from '../lib/metaData'
 
 //
 //  TestParams
@@ -56,6 +51,7 @@ export default class TestParams extends React.Component {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
     console.table(cleanStrings)
+    // window.YETI.customizer.open()
     event.preventDefault()
   }
 
@@ -65,19 +61,14 @@ export default class TestParams extends React.Component {
   }
 
   render () {
-    // TODO: As this component gets larger we will need to break them down into smaller components.
+    const renderedProducts = Object.values(metaData.products).map(curr => utils.renderProducts(curr))
+    const renderedColors = Object.values(metaData.colors).map(curr => utils.renderColors(curr))
+
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
-        <fieldset id="product" onChange={this.handleProductChange}>
-          <legend>Product</legend>
-          {renderedProducts}
-        </fieldset>
-
-        <fieldset id="color" onChange={this.handleColorChange}>
-          <legend>Color</legend>
-          {renderedColors}
-        </fieldset>
+        <Products onChange={this.handleProductChange} renderedProducts={renderedProducts} />
+        <Colors onChange={this.handleColorChange} renderedColors={renderedColors} />
 
         <input type="submit" value="Test" />
         <input type="reset" value="Reset" />

@@ -26,8 +26,11 @@ const utils = {
       products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
       colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), [])
     }
-  }
+  },
 
+  testFire (strings) {
+
+  }
 }
 
 export default utils
