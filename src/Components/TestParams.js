@@ -1,6 +1,7 @@
 import React from 'react'
 import Colors from './Colors'
 import Products from './Products'
+import Embellishments from './Embellishments'
 import utils from '../lib/utilities'
 import metaData from '../lib/metaData'
 
@@ -11,10 +12,15 @@ import metaData from '../lib/metaData'
 export default class TestParams extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { products: new Set(), colors: new Set() }
+    this.state = {
+      products: new Set(),
+      colors: new Set(),
+      embellishments: new Set()
+    }
 
     this.handleProductChange = this.handleProductChange.bind(this)
     this.handleColorChange = this.handleColorChange.bind(this)
+    this.handleEmbellishmentChange = this.handleEmbellishmentChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
   }
@@ -47,11 +53,25 @@ export default class TestParams extends React.Component {
     )
   }
 
+  handleEmbellishmentChange (event) {
+    let selected = event.target.value
+    let embellishments
+
+    // eslint-disable-next-line
+    return this.state.embellishments.has(selected) ? (
+      this.state.embellishments.delete(selected),
+      this.setState({ embellishments: this.state.embellishments })
+    ) : (
+      embellishments = this.state.embellishments.add(selected),
+      this.setState({ embellishments })
+    )
+  }
+
   handleSubmit (event) {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
-    console.table(cleanStrings)
-    // window.YETI.customizer.open()
+    console.log(cleanStrings)
+    window.YETI.customizer.open()
     event.preventDefault()
   }
 
@@ -63,12 +83,14 @@ export default class TestParams extends React.Component {
   render () {
     const renderedProducts = Object.values(metaData.products).map(curr => utils.renderProducts(curr))
     const renderedColors = Object.values(metaData.colors).map(curr => utils.renderColors(curr))
+    const renderedEmbellishments = Object.keys(metaData.embellishments).map(curr => utils.renderEmbellishments(curr))
 
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
         <Products onChange={this.handleProductChange} renderedProducts={renderedProducts} />
         <Colors onChange={this.handleColorChange} renderedColors={renderedColors} />
+        <Embellishments onChange={this.handleEmbellishmentChange} renderedEmbellishments={renderedEmbellishments} />
 
         <input type="submit" value="Test" />
         <input type="reset" value="Reset" />

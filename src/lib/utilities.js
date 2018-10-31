@@ -21,10 +21,20 @@ const utils = {
     )
   },
 
+  renderEmbellishments (embellishment) {
+    return (
+      <div id={embellishment} key={embellishment} style={{ borderStyle: 'solid', borderColor: 'white' }}>
+        <input style={{ paddingTop: 100 }} type="checkbox" name="embellishment" value={embellishment} />
+        <label htmlFor={embellishment}> {embellishment} </label>
+      </div>
+    )
+  },
+
   cleanStrings (strings) {
     return {
       products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
-      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), [])
+      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
+      embellishments: [...strings.embellishments].reduce((acc, curr) => curr.toLowerCase.split(' ').concat(acc), [])
     }
   },
 

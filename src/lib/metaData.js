@@ -103,6 +103,25 @@ const metaData = {
     }
   },
 
+  // TODO: find out if it is possible to use Payload.appData.
+  embellishments: {
+    Designs: [
+
+    ],
+
+    Monogram: [
+
+    ],
+
+    Text: [
+
+    ],
+
+    Logo: [
+
+    ]
+  },
+
   productStrings: [
     // 20oz
     'rambler-tumbler-20oz',
