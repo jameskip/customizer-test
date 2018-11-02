@@ -1,4 +1,5 @@
 import React from 'react'
+import metaData from './metaData'
 
 const utils = {
 
@@ -38,8 +39,16 @@ const utils = {
     }
   },
 
-  testFire (strings) {
+  findMatchingProducts (strings) {
+    const productParams = [...strings.products].join('|')
+    const colorParams = [...strings.colors].join('|')
+    let regex = `(${productParams})$|((${productParams})\\W(${colorParams}))$`
+    regex = RegExp(regex, 'gmi')
+    console.log({ productParams, colorParams, regex })
 
+    let testableStrings = metaData.productStrings.filter(curr => regex.test(curr))
+    console.log({ testableStrings })
+    return 'Boom shackalacka'
   }
 }
 

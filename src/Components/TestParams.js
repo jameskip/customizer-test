@@ -18,59 +18,29 @@ export default class TestParams extends React.Component {
       embellishments: new Set()
     }
 
-    this.handleProductChange = this.handleProductChange.bind(this)
-    this.handleColorChange = this.handleColorChange.bind(this)
-    this.handleEmbellishmentChange = this.handleEmbellishmentChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
   }
 
-  handleProductChange (event) {
+  handleChange (event, type) {
     let selected = event.target.value
     let products
 
     // eslint-disable-next-line
-    return this.state.products.has(selected) ? (
-      this.state.products.delete(selected),
-      this.setState({ products: this.state.products })
+    return this.state[type].has(selected) ? (
+      this.state[type].delete(selected),
+      this.setState({ [type]: this.state[type] })
     ) : (
-      products = this.state.products.add(selected),
-      this.setState({ products })
-    )
-  }
-
-  handleColorChange (event) {
-    let selected = event.target.value
-    let colors
-
-    // eslint-disable-next-line
-    return this.state.colors.has(selected) ? (
-      this.state.colors.delete(selected),
-      this.setState({ colors: this.state.colors })
-    ) : (
-      colors = this.state.colors.add(selected),
-      this.setState({ colors })
-    )
-  }
-
-  handleEmbellishmentChange (event) {
-    let selected = event.target.value
-    let embellishments
-
-    // eslint-disable-next-line
-    return this.state.embellishments.has(selected) ? (
-      this.state.embellishments.delete(selected),
-      this.setState({ embellishments: this.state.embellishments })
-    ) : (
-      embellishments = this.state.embellishments.add(selected),
-      this.setState({ embellishments })
+      products = this.state[type].add(selected),
+      this.setState({ [type]: products })
     )
   }
 
   handleSubmit (event) {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
-    console.log(cleanStrings)
+    console.log(utils.findMatchingProducts(cleanStrings))
     window.YETI.customizer.open()
     event.preventDefault()
   }
@@ -88,9 +58,9 @@ export default class TestParams extends React.Component {
     return (
       <form id="form" onSubmit={this.handleSubmit} onReset={this.handleReset}>
 
-        <Products onChange={this.handleProductChange} renderedProducts={renderedProducts} />
-        <Colors onChange={this.handleColorChange} renderedColors={renderedColors} />
-        <Embellishments onChange={this.handleEmbellishmentChange} renderedEmbellishments={renderedEmbellishments} />
+        <Products onChange={e => this.handleChange(e, 'products')} renderedProducts={renderedProducts} />
+        <Colors onChange={e => this.handleChange(e, 'colors')} renderedColors={renderedColors} />
+        <Embellishments onChange={e => this.handleChange(e, 'embellishments')} renderedEmbellishments={renderedEmbellishments} />
 
         <input type="submit" value="Test" />
         <input type="reset" value="Reset" />
