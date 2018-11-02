@@ -40,8 +40,6 @@ const utils = {
   },
 
   findMatchingProducts (strings) {
-    console.log([...strings.colors].includes('stainless'))
-
     const productParams = [...strings.products].join('|')
     const colorParams = [...strings.colors].join('|')
     let regex = /stainless/.test(colorParams) ? `(${productParams})$|(${productParams}//W${colorParams})$` : `(${colorParams})$`
