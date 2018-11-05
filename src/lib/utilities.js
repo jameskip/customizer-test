@@ -42,8 +42,8 @@ const utils = {
   findMatchingProducts (strings) {
     const productParams = [...strings.products].join('|')
     const colorParams = [...strings.colors].join('|')
-    let regex = /stainless/.test(colorParams) ? `(${productParams})$|(${productParams}//W${colorParams})$` : `(${colorParams})$`
-    regex = RegExp(regex)
+    let regex = /stainless/.test(colorParams) ? `(${productParams})$|(${productParams})-(${colorParams})$` : `(${productParams})-(${colorParams})$`
+    regex = new RegExp(regex)
     console.log({ productParams, colorParams, regex })
 
     let testableStrings = metaData.productStrings.filter(curr => regex.test(curr))
