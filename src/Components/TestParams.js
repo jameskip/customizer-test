@@ -38,11 +38,14 @@ export default class TestParams extends React.Component {
   }
 
   handleSubmit (event) {
+    event.preventDefault()
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
-    console.log(utils.findMatchingProducts(cleanStrings))
-    window.YETI.customizer.open()
-    event.preventDefault()
+    let testableProducts = utils.findMatchingProducts(cleanStrings)
+    console.log({ testableProducts })
+    utils.runTests(testableProducts)
+
+    return testableProducts
   }
 
   handleReset () {

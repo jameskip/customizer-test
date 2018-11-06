@@ -47,8 +47,27 @@ const utils = {
     console.log({ productParams, colorParams, regex })
 
     let testableStrings = metaData.productStrings.filter(curr => regex.test(curr))
-    console.log({ testableStrings })
-    return 'Boom shackalacka'
+    return testableStrings
+  },
+
+  runTests (parameters) {
+    console.log({ parameters })
+
+    parameters.forEach(curr => {
+      const initObject = {
+        selector: '#customizer', // required
+        product: curr, // required
+        data: ["{ itemid: '2592', itemkeyid: 'al-state-bird', itembasekey: '/standard/state/al-state-bird', premium: false }", "{ itemid: '2592', itemkeyid: 'al-state-bird', itembasekey: '/standard/state/al-state-bird', premium: false }"],
+        onReady: function () {
+          window.YETI.customizer.open()
+          window.YETI.customizer.approve()
+        },
+        onApprove: function (data) {
+          console.log({ data })
+        }
+      }
+      window.YETI.customizer.init(initObject)
+    })
   }
 }
 
