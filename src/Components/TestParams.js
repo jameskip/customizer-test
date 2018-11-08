@@ -42,7 +42,7 @@ export default class TestParams extends React.Component {
     // TODO: pass form to test runner to begin running automated tests;
     let cleanStrings = utils.cleanStrings(this.state)
     let testableProducts = utils.findMatchingProducts(cleanStrings)
-    console.log({ testableProducts })
+
     utils.runTests(testableProducts)
 
     return testableProducts

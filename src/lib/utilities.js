@@ -34,8 +34,8 @@ const utils = {
   cleanStrings (strings) {
     return {
       products: [...strings.products].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
-      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().split(' ').concat(acc), []),
-      embellishments: [...strings.embellishments].reduce((acc, curr) => curr.toLowerCase.split(' ').concat(acc), [])
+      colors: [...strings.colors].reduce((acc, curr) => curr.toLowerCase().replace(' ', '').split(' ').concat(acc), []),
+      embellishments: [...strings.embellishments].reduce((acc, curr) => curr.split(' ').concat(acc), [])
     }
   },
 
@@ -53,21 +53,29 @@ const utils = {
   runTests (parameters) {
     console.log({ parameters })
 
-    parameters.forEach(curr => {
-      const initObject = {
+    for (let i = 0; i < parameters.length; i++) {
+      let initObject = {
         selector: '#customizer', // required
-        product: curr, // required
-        data: ["{ itemid: '2592', itemkeyid: 'al-state-bird', itembasekey: '/standard/state/al-state-bird', premium: false }", "{ itemid: '2592', itemkeyid: 'al-state-bird', itembasekey: '/standard/state/al-state-bird', premium: false }"],
+        product: parameters[i], // required
+        data: [],
         onReady: function () {
-          window.YETI.customizer.open()
-          window.YETI.customizer.approve()
+          // window.YETI.customizer.setJSON()
+          // window.YETI.customizer.open()
         },
         onApprove: function (data) {
           console.log({ data })
         }
       }
-      window.YETI.customizer.init(initObject)
-    })
+
+      let func = (init) => {
+        console.log({ init })
+
+        window.YETI.customizer.init(init)
+        window.YETI.customizer.open()
+      }
+
+      setTimeout(func.bind(null, initObject), 1000)
+    }
   }
 }
 
