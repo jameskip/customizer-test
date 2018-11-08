@@ -59,8 +59,8 @@ const utils = {
         product: parameters[i], // required
         data: [],
         onReady: function () {
-          // window.YETI.customizer.setJSON()
-          // window.YETI.customizer.open()
+          window.YETI.customizer.open()
+          window.YETI.customizer.approve()
         },
         onApprove: function (data) {
           console.log({ data })
@@ -74,7 +74,7 @@ const utils = {
         window.YETI.customizer.open()
       }
 
-      setTimeout(func.bind(null, initObject), 1000)
+      setTimeout(func.bind(null, initObject), 1)
     }
   }
 }
