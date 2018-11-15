@@ -49,8 +49,7 @@ export default class TestParams extends React.Component {
   }
 
   handleReset () {
-    // this does not work because when component handles change the first click after registeres as selected already
-    // this.setState({ products: new Set(), colors: new Set() })
+    // TODO: Reset state
   }
 
   render () {
